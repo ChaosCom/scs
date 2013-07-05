@@ -13,7 +13,7 @@ namespace ClientApp
         {
             Console.WriteLine("Press enter to connect to server and send " + Consts.MessageCount + " messages.");
             Console.ReadLine();
-
+            Console.WriteLine("Sending");
             using (var client = ScsClientFactory.CreateClient(new ScsTcpEndPoint("127.0.0.1", 10033)))
             {
                 client.WireProtocol = new MyWireProtocol();
@@ -24,6 +24,7 @@ namespace ClientApp
 
                     for (var i = 0; i < Consts.MessageCount; i++)
                     {
+                        Consts.PrintProgress(i);
                         synchronizedMessenger.SendMessage(new ScsTextMessage("Hello from client!"));
                         var reply = synchronizedMessenger.ReceiveMessage<ScsTextMessage>();
                     }

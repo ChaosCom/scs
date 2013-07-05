@@ -20,7 +20,16 @@ namespace CommonLib
     {
         protected override byte[] SerializeMessage(IScsMessage message)
         {
-            return Encoding.UTF8.GetBytes(((ScsTextMessage)message).Text);
+            if (message is ScsTextMessage)
+            {
+                return Encoding.UTF8.GetBytes(((ScsTextMessage) message).Text);    
+            }
+            else if (message is ScsPingMessage)
+            {
+                //if the application idles, occasional ScsPingMessage(s) are being send out
+                //trying to serialize this as ScsTextMessage will throw an exception
+            }
+            return null;
         }
 
         protected override IScsMessage DeserializeMessage(byte[] bytes)

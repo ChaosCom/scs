@@ -42,7 +42,7 @@ namespace ServerApp
             else if (_messageCount == Consts.MessageCount)
             {
                 _stopwatch.Stop();
-                Console.WriteLine(Consts.MessageCount + " message is received in " + _stopwatch.Elapsed.TotalMilliseconds.ToString("0.000") + " ms.");
+                Consts.PrintStats(_stopwatch.ElapsedMilliseconds);
             }
         }
     }
