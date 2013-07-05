@@ -12,7 +12,7 @@ namespace CalculatorClient
         {
             Console.WriteLine("Press enter to connect to server and call " + Consts.MethodCallCount + " methods...");
             Console.ReadLine();
-
+            Console.WriteLine("Invoking method");
             using (var client = ScsServiceClientBuilder.CreateClient<ICalculatorService>(new ScsTcpEndPoint("127.0.0.1", 10083)))
             {
                 client.Connect();
@@ -20,7 +20,9 @@ namespace CalculatorClient
                 var stopwatch = Stopwatch.StartNew();
                 for (var i = 0; i < Consts.MethodCallCount; i++)
                 {
-                    var division = client.ServiceProxy.Add(2, 3);
+                    Consts.PrintProgress(i);
+                    var sum = client.ServiceProxy.Add(2, 3);
+                    Debug.Assert(sum == 6);
                 }
 
                 stopwatch.Stop();
