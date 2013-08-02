@@ -22,11 +22,11 @@ namespace CalculatorClient
                 {
                     Consts.PrintProgress(i);
                     var sum = client.ServiceProxy.Add(2, 3);
-                    Debug.Assert(sum == 6);
+                    //Debug.Assert(sum == 6);
                 }
 
                 stopwatch.Stop();
-                Console.WriteLine(Consts.MethodCallCount + " remote method call made in " + stopwatch.Elapsed.TotalMilliseconds.ToString("0.000") + " ms.");
+                Consts.PrintStats(stopwatch.ElapsedMilliseconds);
             }
 
             Console.WriteLine("Press enter to stop client application");

@@ -297,7 +297,7 @@ namespace Hik.Communication.Scs.Communication.Protocols.BinarySerialization
 
         /// <summary>
         /// This class is used in deserializing to allow deserializing objects that are defined
-        /// in assemlies that are load in runtime (like PlugIns).
+        /// in assemblies that are load in runtime (like PlugIns).
         /// </summary>
         protected sealed class DeserializationAppDomainBinder : SerializationBinder
         {
