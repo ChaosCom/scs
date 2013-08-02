@@ -6,6 +6,7 @@ using System.Text;
 using Hik.Communication.ScsServices.Service;
 using System.Net;
 using System.Security.Cryptography;
+using System.Diagnostics;
 
 namespace CommonLib
 {
@@ -68,15 +69,35 @@ namespace CommonLib
             MD5 md5 = MD5.Create();
             DateTime input = DateTime.Now;
             byte[] inputBytes = BitConverter.GetBytes(input.ToBinary());
-            byte[] token = md5.ComputeHash(inputBytes);
-            //return Encoding.ASCII.GetString(token);
-            return BitConverter.ToString(token);
+            byte[] tokenArray = md5.ComputeHash(inputBytes);
+            //return Encoding.ASCII.GetString(tokenArray);
+            //return ByteToHexBitFiddle(tokenArray);
+            Debug.WriteLine(ByteToHexBitFiddle(tokenArray));
+
+            return BitConverter.ToString(tokenArray);
+            
+        }
+
+        public static string ByteToHexBitFiddle(byte[] bytes)
+        {
+            char[] c = new char[bytes.Length * 2];
+            int b;
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                b = bytes[i] >> 4;
+                c[i * 2] = (char) (55 + b + (((b-10)>>31)&-7));
+                b = bytes[i] & 0xF;
+                c[i * 2 + 1] = (char) (55 + b + (((b-10)>>31)&-7));
+            }
+            return new string(c);
         }
     }
 
     public static class Consts
     {
         public const int DefaultPort = 10048;
+
+
     }
 
 }
