@@ -32,7 +32,7 @@ namespace CalculatorCommonLib
         public static void PrintStats(double elapsedMilliseconds)
         {
             Console.WriteLine("{0} messages is received in {1} ms ({2:0.00} messages/s)",
-                MethodCallCount, elapsedMilliseconds, MethodCallCount / elapsedMilliseconds);
+                MethodCallCount, elapsedMilliseconds, MethodCallCount / elapsedMilliseconds * 1000);
         }
 
     }
