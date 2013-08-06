@@ -18,12 +18,13 @@ namespace TestServer01
 
             server.Start();
 
-            Console.WriteLine("Mutual Service Server started successfully. Press d to dump, q to quit");
-
             bool quit = false;
+
+            Console.WriteLine("Mutual Service Server started successfully.");
 
             while (!quit)
             {
+                Console.WriteLine("Press d to dump, q to quit");
                 var key = Console.ReadKey();
                 switch (key.KeyChar)
                 {

@@ -11,6 +11,7 @@ using Hik.Samples.Scs.IrcChat.Arguments;
 using Hik.Samples.Scs.IrcChat.Client;
 using Hik.Samples.Scs.IrcChat.Controls;
 using Microsoft.Win32;
+using Hik.Samples.Scs.IrcChat.Exceptions;
 
 namespace Hik.Samples.Scs.IrcChat.Windows
 {
@@ -321,7 +322,14 @@ namespace Hik.Samples.Scs.IrcChat.Windows
         /// <param name="e">Event arguments</param>
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            ConnectToServer();
+            try
+            {
+                ConnectToServer();
+            } catch (NickInUseException ex)
+            {
+                MessageBox.Show("The nick is already in use");
+            }
+            
         }
 
         /// <summary>

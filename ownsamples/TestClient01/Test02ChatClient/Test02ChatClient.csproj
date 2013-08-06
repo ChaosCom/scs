@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A6C1BA83-5A55-4397-A4DD-84FDCA3536A2}</ProjectGuid>
+    <ProjectGuid>{162C0F49-1674-4B30-97D2-DD8EB23B3A5F}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestServer01</RootNamespace>
-    <AssemblyName>TestServer01</AssemblyName>
+    <RootNamespace>Test02ChatClient</RootNamespace>
+    <AssemblyName>Test02ChatClient</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -35,9 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Scs">
-      <HintPath>..\..\..\binaries\Scs.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,14 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MutualService.cs" />
-    <Compile Include="Server.cs" />
+    <Compile Include="ChatClient.cs" />
+    <Compile Include="Test02Client.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CommonLib\CommonLib.csproj">
-      <Project>{F85FB457-C940-453E-8961-5A8BF735466E}</Project>
-      <Name>CommonLib</Name>
+    <ProjectReference Include="..\..\..\src\Scs\Scs.csproj">
+      <Project>{0DC81B09-3ABF-4BB3-8C08-4E8EE4432BDC}</Project>
+      <Name>Scs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Test02CommonLib\Test02CommonLib.csproj">
+      <Project>{D4F6AF0E-0C3A-430C-8595-0A4AE9796CF4}</Project>
+      <Name>Test02CommonLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

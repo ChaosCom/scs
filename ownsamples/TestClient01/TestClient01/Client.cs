@@ -21,7 +21,9 @@ namespace TestClient01
             //print out registered sessions
             PrintSessions(client.ServiceProxy.DiscoverHostedSessions());
 
-            var token = client.ServiceProxy.AnnounceService(HelperFunctions.GenerateToken());
+            var serviceToken = HelperFunctions.GenerateToken();
+            Console.WriteLine("Announcing {0}", serviceToken);
+            var token = client.ServiceProxy.AnnounceService(serviceToken);
 
             //print out registered sessions
             PrintSessions(client.ServiceProxy.DiscoverHostedSessions());

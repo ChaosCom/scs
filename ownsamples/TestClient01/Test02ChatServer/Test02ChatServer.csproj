@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{EF6229DF-49C2-4C5F-B06A-A2526E909F4F}</ProjectGuid>
+    <ProjectGuid>{4DED8B5D-488F-44C4-A9B2-9AD5014FBAD4}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestClient01</RootNamespace>
-    <AssemblyName>TestClient01</AssemblyName>
+    <RootNamespace>Test02ChatServer</RootNamespace>
+    <AssemblyName>Test02ChatServer</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -47,13 +47,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client.cs" />
+    <Compile Include="ChatService.cs" />
+    <Compile Include="Test02Server.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CommonLib\CommonLib.csproj">
-      <Project>{F85FB457-C940-453E-8961-5A8BF735466E}</Project>
-      <Name>CommonLib</Name>
+    <ProjectReference Include="..\Test02CommonLib\Test02CommonLib.csproj">
+      <Project>{D4F6AF0E-0C3A-430C-8595-0A4AE9796CF4}</Project>
+      <Name>Test02CommonLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
