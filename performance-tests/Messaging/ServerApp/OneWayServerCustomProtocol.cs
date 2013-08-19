@@ -29,6 +29,7 @@ namespace ServerApp
 
         static void server_ClientConnected(object sender, ServerClientEventArgs e)
         {
+            Console.WriteLine("Client {0}  connected at {1}.", e.Client.ClientId, e.Client.RemoteEndPoint);
             e.Client.MessageReceived += Client_MessageReceived;
         }
 
@@ -43,6 +44,7 @@ namespace ServerApp
             {
                 _stopwatch.Stop();
                 Consts.PrintStats(_stopwatch.ElapsedMilliseconds);
+                _messageCount = 0;
             }
         }
     }

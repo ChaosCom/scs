@@ -10,8 +10,8 @@ namespace ClientApp
     {
         public static void Run()
         {
-            Console.WriteLine("Press enter to connect to server and send " + Consts.MessageCount + " messages.");
-            Console.ReadLine();
+            //Console.WriteLine("Press enter to connect to server and send " + Consts.MessageCount + " messages.");
+            //Console.ReadLine();
             Console.WriteLine("Sending");
             using (var client = ScsClientFactory.CreateClient(new ScsTcpEndPoint("127.0.0.1", 10033)))
             {
