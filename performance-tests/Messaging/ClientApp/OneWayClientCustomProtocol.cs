@@ -19,10 +19,18 @@ namespace ClientApp
 
                 client.Connect();
 
+                //create a message containing a specified number of random bytes
+                Random r = new Random();
+                byte[] randomBytes = new byte[250];
+                r.NextBytes(randomBytes);
+                var message = randomBytes.ToString();
+
+                //send the message many times to the server
                 for (var i = 0; i < Consts.MessageCount; i++)
                 {
                     Consts.PrintProgress(i);
-                    client.SendMessage(new ScsTextMessage("Hello from client!"));
+                    //client.SendMessage(new ScsTextMessage("Hello from client!"));
+                    client.SendMessage(new ScsTextMessage(message));
                 }
 
                 Console.WriteLine("Press enter to disconnect from server");
