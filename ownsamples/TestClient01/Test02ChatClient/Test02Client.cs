@@ -36,15 +36,16 @@ namespace Test02ChatClient
 
         static void _scsClient_Disconnected(object sender, EventArgs e)
         {
-            Console.WriteLine("Client disconnected");
+            Console.WriteLine("Client {0} disconnected", sender);
         }
 
+        static UserInfo currentUser;
         static void _scsClient_Connected(object sender, EventArgs e)
         {
             Console.WriteLine("Client connected");
             Random r  = new Random();
-            scs.ServiceProxy.Login(new UserInfo { Nick=r.Next().ToString() });
-
+            currentUser = new UserInfo { Nick = r.Next().ToString() };
+            scs.ServiceProxy.Login(currentUser);
         }
 
         public void OnUserLogin(UserInfo info)

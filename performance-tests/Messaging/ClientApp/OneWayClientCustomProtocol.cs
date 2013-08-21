@@ -30,7 +30,8 @@ namespace ClientApp
                 {
                     Consts.PrintProgress(i);
                     //client.SendMessage(new ScsTextMessage("Hello from client!"));
-                    client.SendMessage(new ScsTextMessage(message));
+                    //client.SendMessage(new ScsTextMessage(message));
+                    client.SendMessage(new ScsRawDataMessage(randomBytes));
                 }
 
                 Console.WriteLine("Press enter to disconnect from server");

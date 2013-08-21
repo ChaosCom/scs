@@ -76,7 +76,7 @@ namespace Test02ChatClient
 
         void ScsClient_Disconnected(object sender, EventArgs e)
         {
-            Console.WriteLine("Client disconnected");
+            Console.WriteLine("Client was disconnected.. Is the server still running?");
         }
 
         void ScsClient_Connected(object sender, EventArgs e)
@@ -86,6 +86,11 @@ namespace Test02ChatClient
             _scsClient.ServiceProxy.Login(new UserInfo { Nick=r.Next().ToString() });
 
         }
+
+        //public override string ToString()
+        //{
+        //    return base.ToString();
+        //}
 
     }
 }
