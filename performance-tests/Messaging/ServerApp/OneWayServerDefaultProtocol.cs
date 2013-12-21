@@ -33,11 +33,11 @@ namespace ServerApp
         static void Client_MessageReceived(object sender, MessageEventArgs e)
         {
             ++_messageCount;
-            if (_messageCount == 1)
+            if (_messageCount % Consts.MessageCount == 1)
             {
                 _stopwatch = Stopwatch.StartNew();
             }
-            else if (_messageCount == Consts.MessageCount)
+            else if (_messageCount % Consts.MessageCount == 0)
             {
                 _stopwatch.Stop();
                 Consts.PrintStats(_stopwatch.ElapsedMilliseconds);

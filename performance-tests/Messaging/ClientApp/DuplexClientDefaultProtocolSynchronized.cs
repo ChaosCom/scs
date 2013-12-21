@@ -14,7 +14,7 @@ namespace ClientApp
             Console.WriteLine("Press enter to connect to server and send " + Consts.MessageCount + " messages.");
             Console.ReadLine();
             Console.WriteLine("Sending");
-            using (var client = ScsClientFactory.CreateClient(new ScsTcpEndPoint("127.0.0.1", 10033)))
+            using (var client = ScsClientFactory.CreateClient(Consts.ServerEndpoint))
             {
                 using (var synchronizedMessenger = new SynchronizedMessenger<IScsClient>(client))
                 {

@@ -37,11 +37,11 @@ namespace ServerApp
             var client = (IScsServerClient) sender;
             client.SendMessage(new ScsTextMessage("Hello from server!"));
 
-            if (_messageCount == 1)
+            if (_messageCount % Consts.MessageCount == 1)
             {
                 _stopwatch = Stopwatch.StartNew();
             }
-            else if (_messageCount == Consts.MessageCount)
+            else if (_messageCount % Consts.MessageCount == 0)
             {
                 _stopwatch.Stop();
                 Consts.PrintStats(_stopwatch.ElapsedMilliseconds);

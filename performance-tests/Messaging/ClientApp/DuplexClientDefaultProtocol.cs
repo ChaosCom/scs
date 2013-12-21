@@ -17,7 +17,7 @@ namespace ClientApp
             Console.WriteLine("Press enter to connect to server and send " + Consts.MessageCount + " messages.");
             Console.ReadLine();
             Console.WriteLine("Sending");
-            using (var client = ScsClientFactory.CreateClient(new ScsTcpEndPoint("127.0.0.1", 10033)))
+            using (var client = ScsClientFactory.CreateClient(Consts.ServerEndpoint))
             {
                 client.MessageReceived += client_MessageReceived;
 
@@ -38,14 +38,14 @@ namespace ClientApp
         {
             ++_messageCount;
 
-            if (_messageCount == 1)
+            if (_messageCount % Consts.MessageCount == 1)
             {
                 _stopwatch = Stopwatch.StartNew();
             }
-            else if (_messageCount == Consts.MessageCount)
+            else if (_messageCount % Consts.MessageCount == 0)
             {
                 _stopwatch.Stop();
-                Console.WriteLine(Consts.MessageCount + " message is received in " + _stopwatch.Elapsed.TotalMilliseconds.ToString("0.000") + " ms.");
+                Consts.PrintStats(_stopwatch.ElapsedMilliseconds);
             }
         }
     }

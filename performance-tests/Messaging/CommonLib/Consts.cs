@@ -1,4 +1,5 @@
 ﻿using System;
+using Hik.Communication.Scs.Communication.EndPoints.Tcp;
 
 namespace CommonLib
 {
@@ -19,6 +20,11 @@ namespace CommonLib
 
         //the type of protocol desired for communication between client and server
         public readonly static ProtocolChoice ProtocolChoice = ProtocolChoice.OneWayCustom;
+
+        /// <summary>
+        /// Connection Endpoint to the server. Used by all custom protocols.
+        /// </summary>
+        public static ScsTcpEndPoint ServerEndpoint = new ScsTcpEndPoint("127.0.0.1", 10033);
 
         /// <summary>
         /// Simple progress dot on the command line to see that the application is doing anything.
