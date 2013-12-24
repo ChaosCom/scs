@@ -12,12 +12,8 @@ namespace Hik.Communication.Scs.Communication.EndPoints.Pipes
     /// </summary>
     public sealed class NamedPipeEndPoint : ScsEndPoint
     {
-        #region Constants
-
         internal const string PROTOCOL = "pipe";
         internal const int DEFAULT_CONNECTION_TIMEOUT_SECONDS = 15;
-
-        #endregion
 
         /// <summary>
         /// Gets the endpoint address.
@@ -29,12 +25,10 @@ namespace Hik.Communication.Scs.Communication.EndPoints.Pipes
         /// </summary>
         public int ConnectionTimeout { get; set; }
 
-        #region Constructor
-
         /// <summary>
         /// Initializes a new instance of the <see cref="NamedPipeEndPoint" /> class.
         /// </summary>
-        /// <param name="name">The name.</param>
+        /// <param name="name">The name of the pipe.</param>
         /// <exception cref="System.ArgumentException">Value is null or empty.;address</exception>
         public NamedPipeEndPoint(string name)
         {
@@ -44,10 +38,6 @@ namespace Hik.Communication.Scs.Communication.EndPoints.Pipes
             Name = name;
             ConnectionTimeout = DEFAULT_CONNECTION_TIMEOUT_SECONDS;
         }
-
-        #endregion
-
-        #region Overrides of ScsEndPoint
 
         /// <inheritdoc />
         internal override IScsServer CreateServer()
@@ -61,6 +51,13 @@ namespace Hik.Communication.Scs.Communication.EndPoints.Pipes
             return new NamedPipeClient(this);
         }
 
-        #endregion
+        /// <summary>
+        /// Generates a string representation of this end point object.
+        /// </summary>
+        /// <returns>String representation of this end point object</returns>
+        public override string ToString()
+        {
+            return String.Format("{0}://{1}", PROTOCOL, Name);
+        }
     }
 }

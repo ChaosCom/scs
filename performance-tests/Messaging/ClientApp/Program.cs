@@ -9,9 +9,11 @@ namespace ClientApp
         {
             //make your "configuration" choice of the protocol type in CommonLib.Consts.ProtocolChoice
             //must be in sync with the server choice (taken care of via switch in server Program.cs as well)
-
             switch (Consts.ProtocolChoice)
             {
+                case ProtocolChoice.OneWayCustomPipe:
+                    OneWayClientCustomPipe.Run();
+                    break;
                 case ProtocolChoice.OneWayDefault:
                     OneWayClientDefaultProtocol.Run();
                     break;

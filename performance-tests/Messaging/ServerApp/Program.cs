@@ -11,6 +11,9 @@ namespace ServerApp
             //must be in sync with the server choice (taken care of via switch in server Program.cs as well)
             switch (Consts.ProtocolChoice)
             {
+                case ProtocolChoice.OneWayCustomPipe:
+                    OneWayServerCustomPipe.Run();
+                    break;
                 case ProtocolChoice.OneWayDefault:
                     OneWayServerDefaultProtocol.Run();
                     break;

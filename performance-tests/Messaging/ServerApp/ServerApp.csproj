@@ -89,6 +89,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OneWayServerCustomPipe.cs" />
     <Compile Include="DuplexServerDefaultProtocol.cs" />
     <Compile Include="OneWayServerCustomProtocol.cs" />
     <Compile Include="DuplexServerCustomProtocol.cs" />

@@ -1,4 +1,5 @@
 ﻿using System;
+using Hik.Communication.Scs.Communication.EndPoints.Pipes;
 using Hik.Communication.Scs.Communication.EndPoints.Tcp;
 
 namespace CommonLib
@@ -11,6 +12,7 @@ namespace CommonLib
         DuplexCustom,
         DuplexDefaultSynchronized,
         DuplexCustomSynchronized,
+        OneWayCustomPipe,
     };
 
     public class Consts
@@ -19,7 +21,7 @@ namespace CommonLib
         public const int MessageCount = 100000;
 
         //the type of protocol desired for communication between client and server
-        public readonly static ProtocolChoice ProtocolChoice = ProtocolChoice.OneWayCustom;
+        public readonly static ProtocolChoice ProtocolChoice = ProtocolChoice.OneWayCustomPipe;
 
         /// <summary>
         /// The port the server will listen on.
@@ -33,9 +35,11 @@ namespace CommonLib
 
         /// <summary>
         /// Connection Endpoint TOWARDS the server. Used by all custom protocols on the CLIENT side.
+        /// A pipe needs a special kind of endpoint (NamedPipeEndPoint)
         /// </summary>
         //public static ScsTcpEndPoint ServerEndpoint = new ScsTcpEndPoint(Dns.GetHostAddresses("example.dyndns.org")[0].ToString(), ServerListenPort);
         public static ScsTcpEndPoint ServerEndpoint = new ScsTcpEndPoint("127.0.0.1", ServerListenPort);
+        public static NamedPipeEndPoint ServerPipe = new NamedPipeEndPoint("mypipename");
 
         /// <summary>
         /// Simple progress dot on the command line to see that the application is doing anything.
