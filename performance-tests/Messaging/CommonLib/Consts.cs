@@ -22,9 +22,20 @@ namespace CommonLib
         public readonly static ProtocolChoice ProtocolChoice = ProtocolChoice.OneWayCustom;
 
         /// <summary>
-        /// Connection Endpoint to the server. Used by all custom protocols.
+        /// The port the server will listen on.
         /// </summary>
-        public static ScsTcpEndPoint ServerEndpoint = new ScsTcpEndPoint("127.0.0.1", 10033);
+        public const int ServerListenPort = 10033;
+
+        /// <summary>
+        /// Server endpoints. Used by all protocols on the SERVER side.
+        /// </summary>
+        public static ScsTcpEndPoint ServerListenEndpoint = new ScsTcpEndPoint(ServerListenPort);
+
+        /// <summary>
+        /// Connection Endpoint TOWARDS the server. Used by all custom protocols on the CLIENT side.
+        /// </summary>
+        //public static ScsTcpEndPoint ServerEndpoint = new ScsTcpEndPoint(Dns.GetHostAddresses("example.dyndns.org")[0].ToString(), ServerListenPort);
+        public static ScsTcpEndPoint ServerEndpoint = new ScsTcpEndPoint("127.0.0.1", ServerListenPort);
 
         /// <summary>
         /// Simple progress dot on the command line to see that the application is doing anything.
@@ -36,10 +47,12 @@ namespace CommonLib
             {
                 Console.Write(".");
             }
-            if (currentMessageCount == MessageCount-1)
+            if (currentMessageCount == MessageCount - 1)
             {
                 Console.WriteLine();
             }
+
+
         }
 
         /// <summary>
@@ -48,7 +61,7 @@ namespace CommonLib
         /// <param name="elapsedMilliseconds"></param>
         public static void PrintStats(double elapsedMilliseconds)
         {
-            Console.WriteLine("{0} messages received in {1} ms ({2:0.00} messages/s)",
+            Console.WriteLine("{0} messages in {1} ms ({2:0.00} messages/s)",
                 MessageCount, elapsedMilliseconds, MessageCount / elapsedMilliseconds * 1000);
         }
     }

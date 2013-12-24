@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using CommonLib;
 using Hik.Communication.Scs.Client;
-using Hik.Communication.Scs.Communication.EndPoints.Tcp;
 using Hik.Communication.Scs.Communication.Messages;
 
 namespace ClientApp
@@ -14,22 +13,30 @@ namespace ClientApp
 
         public static void Run()
         {
-            Console.WriteLine("Press enter to connect to server and send " + Consts.MessageCount + " messages.");
-            Console.ReadLine();
-            Console.WriteLine("Sending");
+            //Console.WriteLine("Press enter to connect to server and send " + Consts.MessageCount + " messages.");
+            //Console.ReadLine();
             using (var client = ScsClientFactory.CreateClient(Consts.ServerEndpoint))
             {
                 client.MessageReceived += client_MessageReceived;
 
-                client.Connect();
-
-                for (var i = 0; i < Consts.MessageCount; i++)
+                try
                 {
-                    Consts.PrintProgress(i);
-                    client.SendMessage(new ScsTextMessage("Hello from client!"));
+                    Console.WriteLine("Connecting to " + Consts.ServerEndpoint);
+                    client.Connect();
+
+                    Console.WriteLine("Sending " + Consts.MessageCount + " messages.");
+                    for (var i = 0; i < Consts.MessageCount; i++)
+                    {
+                        Consts.PrintProgress(i);
+                        client.SendMessage(new ScsTextMessage("Hello from client!"));
+                    }
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine(exception.Message);
                 }
 
-                Console.WriteLine("Press enter to disconnect from server");
+                Console.WriteLine("Press enter to close application.");
                 Console.ReadLine();
             }
         }
