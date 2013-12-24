@@ -301,6 +301,14 @@ namespace Hik.Communication.Scs.Communication.Protocols.BinarySerialization
         /// </summary>
         protected sealed class DeserializationAppDomainBinder : SerializationBinder
         {
+            /// <summary>
+            /// Looks through the loaded assemblies of the current app domain and
+            /// returns the first type that matches the type name of the 
+            /// specified assembly.
+            /// </summary>
+            /// <param name="assemblyName">The assembly to search in</param>
+            /// <param name="typeName">The type to look for in the specified assembly</param>
+            /// <returns></returns>
             public override Type BindToType(string assemblyName, string typeName)
             {
                 var toAssemblyName = assemblyName.Split(',')[0];
