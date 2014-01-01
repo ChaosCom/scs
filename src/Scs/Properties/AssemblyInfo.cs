@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Scs")]
 [assembly: AssemblyDescription("Simple Client/Server Framework")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Halil ibrahim Kalkan")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Scs")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
